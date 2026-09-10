@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#00e6c3">
+<meta name="description" content="CAIRO COMMUNITY — a modern Discord community built around people, creativity and gaming.">
+<title>CAIRO COMMUNITY — Official Community</title>
+<style>
+:root{
+  --bg:#050909; --panel:#0a1212; --panel2:#0d1919; --text:#f4fffd;
+  --muted:#9bb5b1; --accent:#00e6c3; --accent2:#00a98f;
+  --line:rgba(0,230,195,.18); --shadow:0 20px 70px rgba(0,0,0,.45);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:
+radial-gradient(circle at 15% 10%,rgba(0,230,195,.10),transparent 28%),
+radial-gradient(circle at 85% 25%,rgba(0,170,150,.08),transparent 30%),var(--bg);
+color:var(--text);line-height:1.6;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+button{font:inherit}
+.container{width:min(1160px,92%);margin:auto}
+nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(5,9,9,.72);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+.navbar{height:76px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:12px;font-weight:900;letter-spacing:.08em}
+.brand img{width:42px;height:42px;border-radius:13px;object-fit:cover;border:1px solid var(--line)}
+.brand span{color:var(--accent)}
+.navlinks{display:flex;gap:26px;align-items:center}
+.navlinks a{color:#c8d8d5;font-size:14px;transition:.25s}
+.navlinks a:hover,.navlinks a.active{color:var(--accent)}
+.menu{display:none;background:none;border:0;color:white;font-size:28px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:13px 19px;border-radius:12px;border:1px solid var(--line);font-weight:800;cursor:pointer;transition:.25s}
+.btn-primary{background:var(--accent);color:#00100d;box-shadow:0 0 30px rgba(0,230,195,.18)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 0 42px rgba(0,230,195,.3)}
+.btn-ghost{background:rgba(255,255,255,.03);color:#eafff9}
+.btn-ghost:hover{border-color:rgba(0,230,195,.45);transform:translateY(-2px)}
+.hero{min-height:100vh;padding:150px 0 90px;display:grid;place-items:center;position:relative}
+.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,9,9,.96),rgba(5,9,9,.55),rgba(5,9,9,.9)),url("logo.png") center/cover no-repeat;opacity:.18;filter:saturate(1.2);z-index:-2}
+.hero:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at center,transparent 10%,var(--bg) 88%);z-index:-1}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:70px;align-items:center}
+.badge{display:inline-flex;gap:8px;align-items:center;border:1px solid var(--line);background:rgba(0,230,195,.06);color:var(--accent);padding:8px 12px;border-radius:999px;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 14px var(--accent)}
+h1{font-size:clamp(48px,8vw,88px);line-height:.95;letter-spacing:-.055em;margin:20px 0}
+h1 span{color:var(--accent)}
+.hero p{font-size:18px;color:var(--muted);max-width:650px}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.hero-logo{display:flex;justify-content:center}
+.hero-logo img{width:min(410px,78vw);aspect-ratio:1;object-fit:cover;border-radius:30px;box-shadow:0 0 90px rgba(0,230,195,.16),var(--shadow);border:1px solid rgba(0,230,195,.25);animation:float 6s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-10px) rotate(.5deg)}}
+section{padding:105px 0;position:relative}
+.section-head{max-width:700px;margin-bottom:38px}
+.eyebrow{color:var(--accent);font-weight:900;font-size:12px;text-transform:uppercase;letter-spacing:.16em}
+h2{font-size:clamp(34px,5vw,54px);line-height:1.05;margin:9px 0 14px}
+.section-head p{color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.015));border:1px solid var(--line);border-radius:20px;padding:25px;box-shadow:var(--shadow);transition:.3s}
+.card:hover{transform:translateY(-5px);border-color:rgba(0,230,195,.38)}
+.icon{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;background:rgba(0,230,195,.09);color:var(--accent);font-size:22px;margin-bottom:18px}
+.card h3{margin-bottom:7px;font-size:20px}.card p{color:var(--muted);font-size:14px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:22px;overflow:hidden;background:rgba(255,255,255,.025)}
+.stat{padding:28px;text-align:center;border-right:1px solid var(--line)}.stat:last-child{border:0}
+.stat strong{display:block;font-size:30px;color:var(--accent)}.stat span{font-size:12px;color:var(--muted)}
+.rules{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.rule{display:flex;gap:16px;padding:20px;border:1px solid var(--line);background:rgba(255,255,255,.025);border-radius:16px}
+.num{color:var(--accent);font-weight:900;font-size:20px}
+.faq{max-width:850px}.faq-item{border-bottom:1px solid var(--line)}
+.faq-q{width:100%;padding:22px 0;background:none;border:0;color:white;text-align:left;display:flex;justify-content:space-between;cursor:pointer;font-weight:800}
+.faq-a{max-height:0;overflow:hidden;color:var(--muted);transition:max-height .3s,padding .3s}
+.faq-item.open .faq-a{max-height:160px;padding:0 0 20px}
+.faq-q b{color:var(--accent);font-size:20px}
+.cta{padding:50px;border:1px solid var(--line);border-radius:28px;background:linear-gradient(135deg,rgba(0,230,195,.12),rgba(255,255,255,.025));display:flex;justify-content:space-between;align-items:center;gap:30px}
+footer{border-top:1px solid var(--line);padding:35px 0;color:var(--muted);font-size:13px}
+.footer-row{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.reveal{opacity:0;transform:translateY(22px);transition:.7s}.reveal.show{opacity:1;transform:none}
+.toast{position:fixed;bottom:22px;left:50%;transform:translate(-50%,20px);opacity:0;background:#0c1918;border:1px solid var(--line);padding:12px 17px;border-radius:12px;z-index:100;transition:.25s;color:white}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:800px){
+ .navlinks{display:none;position:absolute;top:76px;left:0;right:0;background:#07100f;border-bottom:1px solid var(--line);padding:20px;flex-direction:column}
+ .navlinks.open{display:flex}.menu{display:block}.nav-join{display:none}
+ .hero-grid{grid-template-columns:1fr;text-align:center}.hero p{margin:auto}.actions{justify-content:center}.hero-logo{order:-1}
+ .grid{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}.stat:nth-child(2){border-right:0}.stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
+ .rules{grid-template-columns:1fr}.cta{flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<nav>
+ <div class="container navbar">
+  <a class="brand" href="#home"><img src="logo.png" alt="CAIRO Community logo"><span>CAIRO</span> COMMUNITY</a>
+  <button class="menu" id="menu" aria-label="Open menu">☰</button>
+  <div class="navlinks" id="navlinks">
+   <a href="#home">Home</a><a href="#about">About</a><a href="#features">Features</a>
+   <a href="#rules">Rules</a><a href="#faq">FAQ</a><a href="#contact">Contact</a>
+  </div>
+  <a class="btn btn-primary nav-join" href="https://discord.gg/c-o" target="_blank" rel="noopener">Join Discord ↗</a>
+ </div>
+</nav>
+
+<main>
+<section class="hero" id="home">
+ <div class="container hero-grid">
+  <div class="reveal">
+   <div class="badge"><i class="dot"></i> Community • Gaming • Friends</div>
+   <h1>WELCOME TO<br><span>CAIRO</span> COMMUNITY</h1>
+   <p>A place built for people who want a real community — conversations, events, gaming and new connections, all in one server.</p>
+   <div class="actions">
+    <a class="btn btn-primary" href="https://discord.gg/c-o" target="_blank" rel="noopener">Join the Community ↗</a>
+    <a class="btn btn-ghost" href="#about">Explore the site ↓</a>
+   </div>
+  </div>
+  <div class="hero-logo reveal"><img src="logo.png" alt="CAIRO COMMUNITY"></div>
+ </div>
+</section>
+
+<section id="about">
+ <div class="container">
+  <div class="section-head reveal"><div class="eyebrow">01 / About</div><h2>More than a Discord server.</h2><p>CAIRO COMMUNITY is designed around a simple idea: make it easy to meet people, have fun and feel part of something.</p></div>
+  <div class="stats reveal">
+   <div class="stat"><strong>24/7</strong><span>Community access</span></div>
+   <div class="stat"><strong>∞</strong><span>Conversations</span></div>
+   <div class="stat"><strong>100%</strong><span>Community focused</span></div>
+   <div class="stat"><strong>1</strong><span>Place to connect</span></div>
+  </div>
+ </div>
+</section>
+
+<section id="features">
+ <div class="container">
+  <div class="section-head reveal"><div class="eyebrow">02 / Features</div><h2>Built to feel alive.</h2><p>Everything here is presented with a clean, modern identity that matches the CAIRO logo.</p></div>
+  <div class="grid">
+   <article class="card reveal"><div class="icon">✦</div><h3>Active Community</h3><p>Meet people, start conversations and find your place without making things complicated.</p></article>
+   <article class="card reveal"><div class="icon">◈</div><h3>Events & Activities</h3><p>Keep the server moving with community activities, events and moments worth joining.</p></article>
+   <article class="card reveal"><div class="icon">⌁</div><h3>Gaming Friendly</h3><p>A natural home for gamers, creators and anyone who wants a relaxed community atmosphere.</p></article>
+   <article class="card reveal"><div class="icon">♢</div><h3>Friendly Staff</h3><p>A clear structure and moderation mindset help keep the community comfortable for everyone.</p></article>
+   <article class="card reveal"><div class="icon">★</div><h3>Fresh Updates</h3><p>Announcements and community news can be shared in one recognizable place.</p></article>
+   <article class="card reveal"><div class="icon">◎</div><h3>One Identity</h3><p>A consistent visual style across the website and Discord makes CAIRO instantly recognizable.</p></article>
+  </div>
+ </div>
+</section>
+
+<section id="rules">
+ <div class="container">
+  <div class="section-head reveal"><div class="eyebrow">03 / Rules</div><h2>Keep it respectful.</h2><p>These are a clean starting point. Replace them with your server's official rules whenever you are ready.</p></div>
+  <div class="rules">
+   <div class="rule reveal"><div class="num">01</div><div><h3>Respect everyone</h3><p>No harassment, bullying or targeted insults.</p></div></div>
+   <div class="rule reveal"><div class="num">02</div><div><h3>No spam</h3><p>Keep channels readable and avoid repeated or disruptive messages.</p></div></div>
+   <div class="rule reveal"><div class="num">03</div><div><h3>Use the right channels</h3><p>Keep conversations where they belong so everyone can find things easily.</p></div></div>
+   <div class="rule reveal"><div class="num">04</div><div><h3>Follow Discord rules</h3><p>Respect Discord's Terms of Service and Community Guidelines.</p></div></div>
+  </div>
+ </div>
+</section>
+
+<section id="faq">
+ <div class="container">
+  <div class="section-head reveal"><div class="eyebrow">04 / FAQ</div><h2>Questions, answered.</h2></div>
+  <div class="faq">
+   <div class="faq-item reveal"><button class="faq-q">What is CAIRO COMMUNITY?<b>+</b></button><div class="faq-a">A Discord-based community for conversations, gaming, events and meeting new people.</div></div>
+   <div class="faq-item reveal"><button class="faq-q">How do I join?<b>+</b></button><div class="faq-a">Use any of the Join Discord buttons on this website. They open the community invite.</div></div>
+   <div class="faq-item reveal"><button class="faq-q">Is the website official?<b>+</b></button><div class="faq-a">This page is a community landing page using the CAIRO identity and the invite supplied by the server owner.</div></div>
+   <div class="faq-item reveal"><button class="faq-q">Can I contact the staff?<b>+</b></button><div class="faq-a">Join the Discord and use the appropriate support/contact channel provided by the server staff.</div></div>
+  </div>
+ </div>
+</section>
+
+<section id="contact">
+ <div class="container">
+  <div class="cta reveal">
+   <div><div class="eyebrow">05 / Join us</div><h2 style="margin-bottom:6px">Your place is waiting.</h2><p style="color:var(--muted)">Enter the community and become part of CAIRO.</p></div>
+   <a class="btn btn-primary" href="https://discord.gg/c-o" target="_blank" rel="noopener">Join CAIRO ↗</a>
+  </div>
+ </div>
+</section>
+</main>
+
+<footer>
+ <div class="container footer-row">
+  <div>© <span id="year"></span> CAIRO COMMUNITY. Built with care.</div>
+  <div>Discord • Community • Gaming</div>
+ </div>
+</footer>
+<div class="toast" id="toast">Welcome to CAIRO COMMUNITY.</div>
+
+<script>
+const menu=document.getElementById('menu'), links=document.getElementById('navlinks');
+menu.addEventListener('click',()=>links.classList.toggle('open'));
+document.querySelectorAll('.navlinks a').forEach(a=>a.addEventListener('click',()=>links.classList.remove('open')));
+
+document.querySelectorAll('.faq-q').forEach(q=>{
+ q.addEventListener('click',()=>{
+  const item=q.parentElement, open=item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(x=>x.classList.remove('open'));
+  if(!open){item.classList.add('open');q.querySelector('b').textContent='−'} 
+  document.querySelectorAll('.faq-q b').forEach(b=>{if(!b.closest('.faq-item').classList.contains('open'))b.textContent='+'});
+ });
+});
+
+const observer=new IntersectionObserver(entries=>{
+ entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')});
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+const sections=[...document.querySelectorAll('section[id]')], nav=[...document.querySelectorAll('.navlinks a')];
+window.addEventListener('scroll',()=>{
+ let current='home';
+ sections.forEach(s=>{if(scrollY>=s.offsetTop-180)current=s.id});
+ nav.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+current));
+});
+document.getElementById('year').textContent=new Date().getFullYear();
+
+setTimeout(()=>document.getElementById('toast').classList.add('show'),700);
+setTimeout(()=>document.getElementById('toast').classList.remove('show'),3300);
+</script>
+</body>
+</html>
